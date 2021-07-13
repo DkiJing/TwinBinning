@@ -7,15 +7,15 @@ from sklearn.metrics.cluster import homogeneity_score, completeness_score, v_mea
 import numpy as np
 
 num_labels = 10
-classes_dict = {'Cohaesibacter_sp': 0, 'Halomonas_sp_HL_four': 1, 'Halomonas_sp_HL_ninethree': 2,
-'Marinobacter_spone': 3, 'Marinobacter_speight': 4, 'M_coxensis': 5, 
-'M_echinaurantiaca': 6, 'M_echinofusca': 7, 'Muricauda_sp': 8, 
-'Propionibact_b': 9, 'Psychrobacter_sp': 10, 'Thioclava_sp': 11}
+classes_dict = {'Bacteroides_uniformis': 0, 'Bacteroides_xylanisolvens': 1,
+'Cohaesibacter_sp': 2, 'Halomonas_sp_HL_four': 3,
+'Marinobacter_spone': 4, 'M_echinaurantiaca': 5, 
+'Muricauda_sp': 6, 'Propionibact_b': 7, 'Psychrobacter_sp': 8, 'Thioclava_sp': 9}
 
 def get_truth(seqName, binNumber):
     # get main sequence
     seq_list = [s.seq for s in SeqIO.parse(seqName, "fasta")]
-    contigs = [re.sub('[^a-zA-Z_]+', '', str(s.id.split('|')[1]).split('-')[0]) for s in SeqIO.parse(seqName, "fasta")]
+    contigs = [s.id.split('|')[1] for s in SeqIO.parse(seqName, "fasta")]
 
     labels_truth = []
     labels = []

@@ -1,6 +1,7 @@
 import argparse
 
 import numpy as np
+import re
 import csv
 
 parser = argparse.ArgumentParser(description='manual to this script')

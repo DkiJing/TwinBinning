@@ -20,43 +20,17 @@ seed = 7
 batch_size = 128
 cuda = torch.cuda.is_available()
 kwargs = {'num_workers': 1, 'pin_memory': True} if cuda else {}
-SIAMESE_PATH = '../models/3-mer/siamese_net.pth'
+SIAMESE_PATH = '../models/siamese_net.pth'
 
-# classes = ['Bacteroides caecimuris', 'Bacteroides coprosuis', 'Bacteroides fragilis',
-#            'Bacteroides helcogenes', 'Bacteroides heparinolyticus', 'Bacteroides ovatus',
-#            'Bacteroides thetaiotaomicron', 'Bacteroides vulgatus', 'Bacteroides zoogleoformans', 
-#            'Phocaeicola dorei', 'Phocaeicola salanitronis']
-
-# colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
-#           '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
-#           '#bcbd22', '#17becf', '#99ff99']
-
-# classes = ['Acidaminococcus fermentans', 'Bacteroides uniformis', 'Bacteroides xylanisolvens',
-#            'Eggerthella lenta', 'Enterobacter cancerogenus', 'Enterocloster bolteae',
-#            'Proteus mirabilis', 'Providencia alcalifaciens', 'Providencia_rettgeri', 'Rickettsia typhi']
-
-# colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
-#           '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
-#           '#bcbd22', '#17becf']
-
-# classes = ['Cohaesibacter sp', 'Halomonas sp HL-4', 'Halomonas sp HL-93',
-#            'Marinobacter sp1', ' Marinobacter sp8', 'M coxensis',
-#            'M echinaurantiaca', 'M echinofusca ', 'Muricauda sp',
-#            'Propionibact b', 'Psychrobacter sp', 'Thioclava sp']
-
-# colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
-#           '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
-#           '#bcbd22', '#17becf', '#99ff99', '#000099']
-
-classes = ['Cohaesibacter sp', 'Halomonas sp HL-93', 'M coxensis',
-           'M echinaurantiaca', 'M echinofusca ', 'Muricauda sp',
-           'Propionibact b', 'Thioclava sp']
+classes = ['Bacteroides_uniformis', 'Bacteroides_xylanisolvens', 'Cohaesibacter sp', 
+            'Halomonas sp HL-4', 'Marinobacter sp1', 'M echinaurantiaca', 
+            'Muricauda sp', 'Propionibact b', 'Psychrobacter sp', 'Thioclava sp']
 
 colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
           '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
-          '#bcbd22', '#17becf', '#99ff99', '#000099']
+          '#bcbd22', '#17becf']
 
-n_classes = 12
+n_classes = 10
 
 mode = "train"
 
@@ -109,8 +83,7 @@ def plot_model_history(loss_train, loss_test, accuracy_train, accuracy_test):
 
 if __name__ == '__main__':
     # load data from csv file
-    feature_vectors = pd.read_csv('../data/3-mer/train.csv', header=None)
-    # feature_vectors = pd.read_csv('../data/test_dataset/3-mer/kmer.csv', header=None)
+    feature_vectors = pd.read_csv('../data/4-mer/train.csv', header=None)
     dataset = feature_vectors.values
     X = dataset[:, :-1]
     Y = dataset[:, -1]

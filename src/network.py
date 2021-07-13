@@ -15,67 +15,6 @@ class PrintLayer(nn.Module):
 class EmbeddingNet(nn.Module):
     def __init__(self):
         super(EmbeddingNet, self).__init__()
-        # # network 1
-        # self.convnet = nn.Sequential(nn.Conv1d(1, 32, 3), nn.PReLU(),
-        #                              nn.MaxPool1d(2, stride=2),
-        #                              nn.Conv1d(32, 64, 3), nn.PReLU(),
-        #                              nn.MaxPool1d(2, stride=2))
-        #  self.fc = nn.Sequential(nn.Linear(64 * 14, 256),
-        #                         nn.PReLU(),
-        #                         nn.Linear(256, 256),
-        #                         nn.PReLU(),
-        #                         nn.Linear(256, 2)
-        #                         )
-        # # network 2
-        # self.convnet = nn.Sequential(nn.Conv1d(1, 16, kernel_size=5, padding=2),
-        #                              nn.MaxPool1d(2), nn.PReLU(),
-
-        #                              nn.Conv1d(16, 32, kernel_size=5, padding=2),
-        #                              nn.MaxPool1d(2), nn.PReLU(),
-
-        #                              nn.Conv1d(32, 48, kernel_size=5, padding=2),
-        #                              nn.MaxPool1d(2), nn.PReLU())
-
-        # self.fc = nn.Sequential(nn.Linear(48 * 20, 512), # 原来是48*44, 512
-        #                         nn.PReLU(),
-        #                         nn.Linear(512, 256),
-        #                         nn.PReLU(),
-        #                         nn.Linear(256, 2)
-        #                         )
-
-        # # network 3
-        # self.convnet = nn.Sequential( nn.Conv1d(1, 32, 5), nn.PReLU(),
-        #                              nn.MaxPool1d(2, stride=2),
-        #                              nn.Conv1d(32, 64, 5), nn.PReLU(),
-        #                              nn.MaxPool1d(2, stride=2),
-        #                              nn.Conv1d(64, 128, 5), nn.PReLU(),
-        #                              nn.MaxPool1d(2, stride=2))
-        # self.fc = nn.Sequential(nn.Linear(128 * 17, 256), # 原来是128*124, 256
-        #                         nn.PReLU(),
-        #                         nn.Linear(256, 128),
-        #                         nn.PReLU(),
-        #                         nn.Linear(128, 2)
-        #                         )
-        # 
-        # # network 4
-        # self.convnet = nn.Sequential(nn.Conv1d(1, 16, 3), nn.PReLU(),
-        #                              nn.MaxPool1d(2, stride=2),
-        #                              nn.Conv1d(16, 32, 3), nn.PReLU(),
-        #                              nn.MaxPool1d(2, stride=2),
-        #                              nn.Conv1d(32, 64, 3), nn.PReLU(),
-        #                              nn.MaxPool1d(2, stride=2))
-        # self.fc = nn.Sequential(nn.Linear(64 * 18, 1024), # 原来是64*626, 1024
-        #                         nn.PReLU(),
-        #                         nn.Linear(1024, 512),
-        #                         nn.PReLU(),
-        #                         nn.Linear(512, 256),
-        #                         nn.PReLU(),
-        #                         nn.Linear(256, 128),
-        #                         nn.PReLU(),
-        #                         nn.Linear(128, 2)
-        #                         )
-
-        # network 5
         self.convnet = nn.Sequential(nn.Conv1d(1, 64, 7), nn.PReLU(),
                                      nn.MaxPool1d(2, stride=2),
                                      nn.Conv1d(64, 128, 5), nn.PReLU(),
@@ -83,9 +22,9 @@ class EmbeddingNet(nn.Module):
                                      nn.Conv1d(128, 128, 3), nn.PReLU(),
                                      nn.MaxPool1d(2, stride=2),
                                      nn.Conv1d(128, 256, 3), nn.PReLU())
-        self.fc = nn.Sequential(nn.Linear(256 * 3, 384), # 原来是256*3, 384
+        self.fc = nn.Sequential(nn.Linear(256 * 27, 384), 
                                 nn.Sigmoid(),
-                                nn.Linear(384, 2)
+                                nn.Linear(384, 2) 
                                 )
 
     def forward(self, x):
