@@ -20,7 +20,7 @@ do
 done
 echo "Generate abundance profile..."
 cd $covmyout
-samtools depth $benchmark/coverage/metabat2/sample/myout.sorted.bam > output.txt
+samtools depth $benchmark/metabat2/sample/myout.sorted.bam > output.txt
 average=`awk '{sum+=$3} END{print sum/NR}' output.txt`
 echo "Average depth is $average"
 cd $src
