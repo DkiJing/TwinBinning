@@ -4,7 +4,7 @@ species=$parentdir/data/test_dataset/selected_species
 contigs=$parentdir/data/test_dataset/output_contigs
 benchmark=$parentdir/benchmarks
 covdepth=$parentdir/benchmarks/metabat2/sample
-reads=$parentdir/benchmarks/coverage/reads
+reads=$parentdir/benchmarks/reads
 output_bins=$parentdir/benchmarks/metabat2/myout
 contig_len=4000
 
