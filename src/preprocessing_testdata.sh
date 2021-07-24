@@ -7,7 +7,7 @@ threemer=$parentdir/data/test_dataset/3-mer/kmer.csv
 fourmer=$parentdir/data/test_dataset/4-mer/test.csv
 feature=$parentdir/data/test_dataset/3-mer/test.csv
 covfreq=$parentdir/data/test_dataset/3-mer/abundance_profile.csv
-covmyout=$parentdir/data/test_dataset/coverage/myout
+covmyout=$parentdir/data/test_dataset/coverage
 benchmark=$parentdir/benchmarks
 contig_len=4000
 
@@ -25,9 +25,8 @@ do
   label=$((label+1))
 done
 echo "Generate abundance profile..."
-cp $benchmark/coverage/metabat2/sample/myout.sorted.bam $covmyout
 cd $covmyout
-samtools depth myout.sorted.bam > output.txt
+samtools depth $benchmark/coverage/metabat2/sample/myout.sorted.bam > output.txt
 average=`awk '{sum+=$3} END{print sum/NR}' output.txt`
 echo "Average depth is $average"
 cd $src
