@@ -6,10 +6,10 @@
 #SBATCH -p cpu2
 
 #CUDA_VISIBLE_DEVICES=1
-echo "Preprocessing the test data"
-./preprocessing_testdata.sh
 echo "Contig binning through metabat2"
 ./metabat_binning.sh
+echo "Preprocessing the test data"
+./preprocessing_testdata.sh
 echo "Preprocessing the train data"
 ./preprocessing_traindata.sh
 echo "Start trainning.."

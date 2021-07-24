@@ -8,7 +8,7 @@ fourmer=$parentdir/data/test_dataset/4-mer/test.csv
 feature=$parentdir/data/test_dataset/3-mer/test.csv
 covfreq=$parentdir/data/test_dataset/3-mer/abundance_profile.csv
 covmyout=$parentdir/data/test_dataset/coverage/myout
-reads=$parentdir/data/test_dataset/coverage/reads
+benchmark=$parentdir/benchmarks
 contig_len=4000
 
 echo "Cut contigs..."
@@ -25,12 +25,8 @@ do
   label=$((label+1))
 done
 echo "Generate abundance profile..."
-cat $contigs/*.fa > $covmyout/combined_pairs.fa 
+cp $benchmark/coverage/metabat2/sample/myout.sorted.bam $covmyout
 cd $covmyout
-bowtie2-build combined_pairs.fa myout.idx 1>myout.sam.bowtie2build.out 2>myout.sam.bowtie2build.err
-bowtie2 -p 4 -x myout.idx -U $reads/combined_all_reads.fq -S myout.sam 1>myout.sam.bowtie2.out 2>myout.sam.bowtie2.err
-samtools view -bS myout.sam > myout.bam
-samtools sort myout.bam -o myout.sorted.bam
 samtools depth myout.sorted.bam > output.txt
 average=`awk '{sum+=$3} END{print sum/NR}' output.txt`
 echo "Average depth is $average"
