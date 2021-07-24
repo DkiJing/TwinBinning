@@ -1,7 +1,6 @@
 #!/bin/bash
 parentdir="$(dirname `pwd`)"
 src=$parentdir/src
-species=$parentdir/data/test_dataset/selected_species
 contigs=$parentdir/data/test_dataset/output_contigs
 threemer=$parentdir/data/test_dataset/3-mer/kmer.csv
 fourmer=$parentdir/data/test_dataset/4-mer/test.csv
@@ -11,11 +10,6 @@ covmyout=$parentdir/data/test_dataset/coverage
 benchmark=$parentdir/benchmarks
 contig_len=4000
 
-echo "Cut contigs..."
-for i in `ls $species`
-do
-  python contig_generation.py -s $species/$i/`ls "$species/$i"` -b $contig_len -o $contigs/$i.fa
-done
 echo "Kmer extraction..."
 label=0
 for i in `ls $contigs`
