@@ -14,12 +14,12 @@ args = parser.parse_args()
 contig_len = args.length
 abundance_file = args.input
 output_file = args.output
-flag = 0
-prev_name = 0
-coverage_vector = [0 for i in range(contig_len)]
+prev_name = ""
 coverage_list = []
 
 def parse_depth_file(abundance_file):
+    flag = 0
+    coverage_vector = [0 for i in range(contig_len)]
     for n, line in enumerate(open(abundance_file)):
         name = line.strip().split()[0]
         pos = int(line.strip().split()[1])
@@ -63,6 +63,7 @@ def get_abundance_profile(abundance, maxDepth, minDepth, meanDepth):
                 if (abundance[i][j] != 0 and abundance[i][j] < maxDepth):
                     maxFreqProfile[i][abundance[i][j] - 1] += 1
             freqProfile[i] = maxFreqProfile[i][0:end:int(step)]
+    return freqProfile
 
 if __name__ == '__main__':
     # Parse depth file produced from Samtools
