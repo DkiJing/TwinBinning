@@ -17,10 +17,13 @@ abundance_vectors = pd.read_csv(args.abundance, header=None)
 kmer = kmer_vectors.values
 abundance = abundance_vectors.values
 
-X = np.hstack((kmer[:, :-1], abundance))
-Y = kmer[:, -1].reshape((-1, 1))
+try:
+	X = np.hstack((kmer[:, :-1], abundance))
+	Y = kmer[:, -1].reshape((-1, 1))
+	vector = np.hstack((X, Y))
+except:
+	print("The size of kmer and abundance profile are not matched.")
 
-vector = np.hstack((X, Y))
 print(vector.shape)
 
 # write feature vector to csv file
