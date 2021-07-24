@@ -6,6 +6,7 @@ benchmark=$parentdir/benchmarks
 covdepth=$parentdir/benchmarks/metabat2/sample
 reads=$parentdir/benchmarks/coverage/reads
 output_bins=$parentdir/benchmarks/metabat2/myout
+contig_len=4000
 
 echo "Cut contigs..."
 for i in `ls $species`
