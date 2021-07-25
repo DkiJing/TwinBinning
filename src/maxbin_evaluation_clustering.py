@@ -25,7 +25,7 @@ def get_truth(seqName, binNumber):
     return labels_truth, labels
         
 if __name__ == '__main__':
-    directory = "../benchmarks/cov_diff_5/metabat2/myout"
+    directory = "../benchmarks/metabat2/myout"
     rand_index = []
     truth_list = []
     pred_list = []
