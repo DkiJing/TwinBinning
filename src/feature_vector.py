@@ -58,7 +58,7 @@ vector = cv.transform(sequences).toarray()
 labels = np.array(labels).reshape((-1, 1))
 vector = np.hstack((vector, labels))
 
-print(vector.shape)
+print("K-mer feature shape: " + str(vector.shape))
 
 # write feature vector to csv file
 with open(output_path, 'a', newline='') as f:

@@ -1,15 +1,16 @@
 #!/bin/bash
-src="/home/jli347/src"
-species="/home/jli347/data/10_genomes"
-contigs="/home/jli347/output_contigs"
-metabat_contigs="/home/jli347/benchmarks/cov_diff_5/metabat2/myout"
-threemer="/home/jli347/data/3-mer/kmer.csv"
-fourmer="/home/jli347/data/4-mer/train.csv"
-feature="/home/jli347/data/3-mer/train.csv"
-cov="/home/jli347/data/3-mer/abundance.csv"
-covfreq="/home/jli347/data/3-mer/abundance_profile.csv"
-covsample="/home/jli347/benchmarks/cov_diff_5/metabat2/sample_input"
-reads="/home/jli347/benchmarks/cov_diff_5/reads"
+parentdir="$(dirname `pwd`)"
+src=$parentdir/src
+species=$parentdir/data/baseline
+contigs=$parentdir/output_contigs
+metabat_contigs=$parentdir/benchmarks/metabat2/myout
+threemer=$parentdir/data/3-mer/kmer.csv
+fourmer=$parentdir/data/4-mer/train.csv
+feature=$parentdir/data/3-mer/train.csv
+covfreq=$parentdir/data/3-mer/abundance_profile.csv
+covsample=$parentdir/benchmarks/metabat2/sample_input
+reads=$parentdir/benchmarks/reads
+contig_len=4000
 
 echo "Cut contigs..."
 for i in `ls $species`
@@ -31,16 +32,15 @@ do
   label=$((label+1))
 done
 echo "Generate abundance profile..."
-cat $metabat_contigs/*.fa > $covsample/Bacteroides_pairs.fa 
+cat $metabat_contigs/*.fa > $covsample/combined_pairs.fa 
 cd $covsample
-bowtie2-build Bacteroides_pairs.fa myout.idx 1>myout.sam.bowtie2build.out 2>myout.sam.bowtie2build.err
-bowtie2 -p 4 -x myout.idx -U $reads/Bacteroides_all_reads.fq -S myout.sam 1>myout.sam.bowtie2.out 2>myout.sam.bowtie2.err
+bowtie2-build combined_pairs.fa myout.idx 1>myout.sam.bowtie2build.out 2>myout.sam.bowtie2build.err
+bowtie2 -p 4 -x myout.idx -U $reads/combined_all_reads.fq -S myout.sam 1>myout.sam.bowtie2.out 2>myout.sam.bowtie2.err
 samtools view -bS myout.sam > myout.bam
 samtools sort myout.bam -o myout.sorted.bam
 samtools depth myout.sorted.bam > output.txt
 average=`awk '{sum+=$3} END{print sum/NR}' output.txt`
 echo "Average depth is $average"
 cd $src
-python abundance_vector.py -l 4000 -i $covsample/output.txt -o $cov
-python abundance_profile.py -i $cov -o $covfreq -m $average
+python abundance_profile.py -l $contig_len -i $covsample/output.txt -o $covfreq -m $average
 python feature_combined_vector.py -k $threemer -a $covfreq -o $feature 
