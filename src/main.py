@@ -12,7 +12,7 @@ from torch.optim import lr_scheduler
 from trainer import fit, test_epoch
 import matplotlib.pyplot as plt
 import numpy as np
-from metrics import AccumulatedAccuracyMetric, SiameseAccuracyMetric
+from metrics import SiameseAccuracyMetric
 import time
 
 # parameters
