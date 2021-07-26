@@ -35,16 +35,16 @@ class SiameseAccuracyMetric(Metric):
         return vector
 
     def mysigmoid(self, x):
-        return 1 + (-1 / (1 + np.exp(-x)))
+        return 1 + (-1 / (1 + torch.exp(-x)))
 
     def __call__(self, outputs, target, loss):
         distances = (outputs[0].data - outputs[1].data).pow(2).sum(1)  # squared distances
         normalized_distances = self.normalize(distances).reshape((-1, 1))
-        pred = np.round(self.mysigmoid(normalized_distances - self.threshold_dist)).type(torch.LongTensor)
+        pred = torch.round(self.mysigmoid(normalized_distances - self.threshold_dist))
         self.correct += pred.eq(target[0].data.view_as(pred)).cpu().sum()
         self.total += target[0].size(0)
         # confusion matrix calculation
-        self.cm += confusion_matrix(target[0].data.view_as(pred), pred)
+        self.cm += confusion_matrix(target[0].data.view_as(pred).cpu(), pred.cpu())
         return self.value()
 
     def reset(self):

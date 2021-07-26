@@ -19,7 +19,7 @@ import time
 seed = 7
 batch_size = 128
 cuda = torch.cuda.is_available()
-kwargs = {'num_workers': 1, 'pin_memory': True} if cuda else {}
+kwargs = {'num_workers': 0, 'pin_memory': False} if cuda else {}
 SIAMESE_PATH = '../models/siamese_net.pth'
 
 classes = ['Bacteroides_uniformis', 'Bacteroides_xylanisolvens', 'Cohaesibacter sp', 
