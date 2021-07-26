@@ -16,13 +16,14 @@ This repository contains the srouce code of my master dissertation in CityU.
 ### Operating system  
 Now we only support Linux and MacOS  
 ## Installation  
+1. Download the source code  
 ```
-git clone https://github.com/DkiJing/TwinBinning.git  
-cd TwinBinning
-cd src  
-./metabat_binning.sh  
-./preprocessing_testdata.sh  
-./preprocessing_traindata.sh  
-python main.py  
+git clone https://github.com/DkiJing/TwinBinning.git   
 ```  
+2. Put contig "combined_pairs.fa" and reads "combined_all_reads.fq" file in corresponding positions  
+> 
+├── benchmarks
+│   ├── combined_pairs.fa
+│   └── reads
+│       └── combined_all_reads.fq
 Play the code "Transfer twin learning.ipynb" on jupyter notebook!  
