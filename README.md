@@ -21,10 +21,12 @@ Now we only support Linux and MacOS
 git clone https://github.com/DkiJing/TwinBinning.git   
 ```  
 2. Put contig "combined_pairs.fa" and reads "combined_all_reads.fq" file in corresponding positions  
+```  
 ├── benchmarks  
 │   ├── combined_pairs.fa   
 │   └── reads  
 │       └── combined_all_reads.fq  
+```  
 3. Run the program  
 ```  
 cd src  
