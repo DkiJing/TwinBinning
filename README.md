@@ -16,7 +16,9 @@ This repository contains the srouce code of my master dissertation in CityU.
 ### Operating system  
 Now we only support Linux and MacOS  
 ## Installation  
-```  
+```
+git clone https://github.com/DkiJing/TwinBinning.git  
+cd TwinBinning
 cd src  
 ./metabat_binning.sh  
 ./preprocessing_testdata.sh  
