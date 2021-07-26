@@ -23,4 +23,4 @@ cd src
 ./preprocessing_traindata.sh  
 python main.py  
 ```  
-Then Play the code "Transfer twin learning.ipynb" on jupyter notebook!  
+Play the code "Transfer twin learning.ipynb" on jupyter notebook!  
