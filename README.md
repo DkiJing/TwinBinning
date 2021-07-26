@@ -16,7 +16,7 @@ This repository contains the srouce code of my master dissertation in CityU.
 ### Operating system  
 Now we only support Linux and MacOS  
 ## Installation  
-```console  
+```  
 cd src  
 ./metabat_binning.sh  
 ./preprocessing_testdata.sh  
