@@ -1,5 +1,4 @@
 import pandas as pd
-from scipy.sparse import data
 import torch
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
