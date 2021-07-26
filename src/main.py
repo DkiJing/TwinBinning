@@ -69,7 +69,7 @@ def plot_model_history(loss_train, loss_test, accuracy_train, accuracy_test):
     axs[0].set_title('Model Loss')
     axs[0].set_ylabel('Loss')
     axs[0].set_xlabel('Epoch')
-    axs[0].set_xticks(np.arange(1,len(loss_train)+1), len(loss_train)/10)
+    axs[0].set_xticks(np.arange(1,len(loss_train)+1))
     axs[0].legend(['train', 'val'], loc='best')
     # accuracy of model
     axs[1].plot(range(1,len(accuracy_train)+1),accuracy_train)
@@ -77,7 +77,7 @@ def plot_model_history(loss_train, loss_test, accuracy_train, accuracy_test):
     axs[1].set_title('Model Accuracy')
     axs[1].set_ylabel('Accuracy')
     axs[1].set_xlabel('Epoch')
-    axs[1].set_xticks(np.arange(1,len(accuracy_train)+1),len(accuracy_train)/10)
+    axs[1].set_xticks(np.arange(1,len(accuracy_train)+1))
     axs[1].legend(['train', 'val'], loc='best')
     fig.savefig('../images/' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '.png')
 
