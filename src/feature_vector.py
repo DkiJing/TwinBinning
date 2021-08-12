@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 import csv
 import numpy as np
 from random import randrange
+import sys
 
 parser = argparse.ArgumentParser(description='manual to this script')
 parser.add_argument('-i', '--input', type=str, default=None)
